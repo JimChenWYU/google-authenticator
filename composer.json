@@ -1,0 +1,17 @@
+{
+    "name": "jimchen/googleauthenticator",
+    "description": "PHP class to generate and verify Google Authenticator 2-factor authentication",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JimChen",
+            "email": "imjimchen@163.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "JimChen\\GoogleAuthenticator\\": "src"
+        }
+    }
+}
