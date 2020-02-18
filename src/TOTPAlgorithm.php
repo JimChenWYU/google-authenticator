@@ -12,6 +12,13 @@ class TOTPAlgorithm
     protected $codeLength = 6;
 
     /**
+     * Generate a keyed hash value using the HMAC method
+     *
+     * @var string
+     */
+    protected $hashAlgo = 'SHA1';
+
+    /**
      * Calculate the code, with given secret and point in time.
      *
      * @param string   $secret
@@ -30,7 +37,7 @@ class TOTPAlgorithm
         // Pack time into binary string
         $time = chr(0).chr(0).chr(0).chr(0).pack('N*', $timeSlice);
         // Hash it with users secret key
-        $hm = hash_hmac('SHA1', $time, $secretkey, true);
+        $hm = hash_hmac($this->hashAlgo, $time, $secretkey, true);
         // Use last nipple of result as index/offset
         $offset = ord(substr($hm, -1)) & 0x0F;
         // grab 4 bytes of the result
@@ -87,6 +94,42 @@ class TOTPAlgorithm
     public function setCodeLength($length)
     {
         $this->codeLength = $length;
+
+        return $this;
+    }
+
+    /**
+     * SHA1
+     *
+     * @return $this
+     */
+    public function setSha1HashAlgo()
+    {
+        $this->hashAlgo = 'SHA1';
+
+        return $this;
+    }
+
+    /**
+     * SHA256
+     *
+     * @return $this
+     */
+    public function setSha256HashAlgo()
+    {
+        $this->hashAlgo = 'SHA256';
+
+        return $this;
+    }
+
+    /**
+     * SHA512
+     *
+     * @return $this
+     */
+    public function setSha512HashAlgo()
+    {
+        $this->hashAlgo = 'SHA512';
 
         return $this;
     }
