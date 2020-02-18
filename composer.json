@@ -1,6 +1,7 @@
 {
     "name": "jimchen/googleauthenticator",
     "description": "PHP class to generate and verify Google Authenticator 2-factor authentication",
+    "keywords": ["GoogleAuthenticator", "TOTP", "rfc6238"],
     "license": "MIT",
     "authors": [
         {
